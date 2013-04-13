@@ -5,8 +5,15 @@ $endif$
 $if(colortheme)$
   \usecolortheme{$colortheme$}
 $endif$
-\usepackage{amssymb,amsmath}
+\usepackage{amsmath,amsthm, amsfonts, amssymb, mathrsfs,array,bm}
+\usepackage{verbatim}
+\usepackage{zhspacing}
+\usepackage{fancybox,fancyhdr, geometry, multicol}
+\usepackage{subfigure}
 \usepackage[boldfont,slantfont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+\usepackage{hyperref,color}\hypersetup{colorlinks=true,linkcolor=magenta, citecolor = green,  filecolor = brown, urlcolor = cyan}
+
 \newcommand{\hurl}[1]{\href{#1}{\color{blue}#1}} %自定义的命令\hurl
 \usepackage{ifxetex,ifluatex}
 
@@ -22,7 +29,7 @@ $endif$
 \ifxetex
 \usepackage{fontspec,xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-\setCJKmainfont{文泉驿微米黑}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimHei]{文泉驿微米黑}
 \setCJKsansfont{Kaiti}
 \setCJKmonofont{SimSun}
 \punctstyle{quanjiao}
@@ -153,7 +160,7 @@ $include-before$
  
 $endfor$
 $if(toc)$
-\begin{frame}
+\begin{frame}\frametitle{大纲}
 \tableofcontents[hideallsubsections]
 \end{frame}
  

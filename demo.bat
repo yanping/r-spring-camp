@@ -1,1 +1,1 @@
-pandoc -t beamer --template=cos.beamer.tex --latex-engine=xelatex -Vurl:1 -V theme:CambridgeUS -V colortheme:dolphin  -V shorttitle:COS  demo.md  -o demo.pdf
+pandoc -t beamer --template=cos.beamer.tex --latex-engine=xelatex  --toc -Vurl:1 -V theme:CambridgeUS -V colortheme:dolphin  -V shorttitle:COS  demo.md  -o demo.pdf
