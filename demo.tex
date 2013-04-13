@@ -1,0 +1,316 @@
+\documentclass[ignorenonframetext,]{beamer}
+\usepackage{amssymb,amsmath}
+\usepackage[boldfont,slantfont,CJKsetspaces,CJKchecksingle]{xeCJK}
+\newcommand{\hurl}[1]{\href{#1}{\color{blue}#1}} %自定义的命令\hurl
+\usepackage{ifxetex,ifluatex}
+
+% 表格环境
+\usepackage{longtable}
+
+% 下面三行是表格脚注的定义
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+
+
+\ifxetex
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\setCJKmainfont{文泉驿微米黑}
+\setCJKsansfont{Kaiti}
+\setCJKmonofont{SimSun}
+\punctstyle{quanjiao}
+\else
+\ifluatex
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\else
+\usepackage[utf8]{inputenc}
+\fi
+\fi
+
+
+
+
+  \usepackage{color}
+  \usepackage{fancyvrb}
+  \DefineShortVerb[commandchars=\\\{\}]{\|}
+  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+  % Add ',fontsize=\small' for more characters per line
+  \newenvironment{Shaded}{}{}
+  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+  \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+  \newcommand{\RegionMarkerTok}[1]{{#1}}
+  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+  \newcommand{\NormalTok}[1]{{#1}}
+
+
+% Redefine labelwidth for lists; otherwise, the enumerate package will cause
+% markers to extend beyond the left margin.
+% \makeatletter\AtBeginDocument{%
+% \renewcommand{\@listi}
+% {\setlength{\labelwidth}{4em}}
+% }\makeatother
+  \usepackage{enumerate}
+
+  \usepackage{ctable}
+  \usepackage{float} % provides the H option for float placement
+
+  \usepackage{url}
+
+
+% Comment these out if you don't want a slide with just the
+% part/section/subsection/subsubsection title:
+\AtBeginPart{\frame{\partpage}}
+\AtBeginSection{\frame{\sectionpage}}
+\AtBeginSubsection{\frame{\subsectionpage}}
+\AtBeginSubsubsection{\frame{\subsubsectionpage}}
+
+% \setlength{\parindent}{0pt}
+% \setlength{\parskip}{6pt plus 2pt minus 1pt}
+% \setlength{\emergencystretch}{3em} % prevent overfull lines
+  \setcounter{secnumdepth}{0}
+
+
+
+ 
+      \title{R语言春令营（1）：导论}
+  
+  \author{\href{mailto:chen@yanping.me}{陈堰平}}
+
+  \date{April 14, 2013}
+
+\institute[统计之都]{
+统计之都\\
+\hurl{http://cos.name}
+}
+
+\setbeamertemplate{navigation symbols}{}
+\begin{document}
+  \frame{\titlepage}
+ 
+\section{R的安装}
+
+\begin{frame}\frametitle{Reproducibility}
+
+\begin{itemize}
+\item
+  Same script
+\item
+  Same results
+\item
+  Anywhere
+  \begin{itemize}
+  \item
+    Single thread
+  \item
+    Multi-core
+  \item
+    Cloud Scale
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Everything starts with a seed.}
+
+Simulation is based off Pseudo-random number generation (PRNG).
+
+\begin{itemize}
+\item
+  PRNG is sequential, next number depends on the last state.
+\item
+  Seeds are used to store the state of a random number generator
+\item
+  by `Setting a seed' one can place a PRNG into any exact state.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Parallel Random Number Generation}
+
+Simulation is complicated in new parallel environments.
+
+\begin{itemize}
+\item
+  PRNG is sequential,
+\item
+  parallel execution is not,
+\item
+  and order of execution is not guaranteed.
+\end{itemize}
+\textbar{} Right \textbar{} Left \textbar{} Default \textbar{} Center
+\textbar{}
+\textbar{}------:\textbar{}:-----\textbar{}---------\textbar{}:------:\textbar{}
+\textbar{} 12 \textbar{} 12 \textbar{} 12 \textbar{} 12 \textbar{}
+\textbar{} 123 \textbar{} 123 \textbar{} 123 \textbar{} 123 \textbar{}
+\textbar{} 1 \textbar{} 1 \textbar{} 1 \textbar{} 1 \textbar{}
+
+: Demonstration of simple table syntax.
+
+This is where parallel pseudo-random number generators help out.
+
+\end{frame}
+
+\begin{frame}\frametitle{Parallel PRNG}
+
+Parallel pseudo-random number generators start with a singe state that
+can spawn additional streams as well as streams of random numbers.
+
+\begin{enumerate}[1.]
+\item
+  SPRNG
+\item
+  L'Ecuyer combined multiple-recursive generator
+\end{enumerate}
+\ctable[caption = Here's the caption., pos = H, center, botcap]{clrl}
+{% notes
+}
+{% rows
+\FL
+\parbox[b]{0.17\columnwidth}{\centering
+Centered Header
+} & \parbox[b]{0.11\columnwidth}{\raggedright
+Default Aligned
+} & \parbox[b]{0.22\columnwidth}{\raggedleft
+Right Aligned
+} & \parbox[b]{0.35\columnwidth}{\raggedright
+Left Aligned
+}
+\ML
+\parbox[t]{0.17\columnwidth}{\centering
+First
+} & \parbox[t]{0.11\columnwidth}{\raggedright
+row
+} & \parbox[t]{0.22\columnwidth}{\raggedleft
+12.0
+} & \parbox[t]{0.35\columnwidth}{\raggedright
+Example of a row that spans multiple lines.
+}
+\\\noalign{\medskip}
+\parbox[t]{0.17\columnwidth}{\centering
+Second
+} & \parbox[t]{0.11\columnwidth}{\raggedright
+row
+} & \parbox[t]{0.22\columnwidth}{\raggedleft
+5.0
+} & \parbox[t]{0.35\columnwidth}{\raggedright
+Here's another one. Note the blank line between rows.
+}
+\LL
+}
+
+\end{frame}
+
+\section{R包的使用}
+
+\begin{frame}[fragile]\frametitle{R package \texttt{harvestr}}
+
+\url{https://github.com/halpo/harvestr}
+
+What \texttt{harvestr} does:
+
+\begin{itemize}
+\item
+  Reproducibility
+\item
+  Caching
+\item
+  Under parallelized environments.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{How \texttt{harvestr} works}
+
+\begin{itemize}
+\item
+  Analytical elements are separated into work-flows of dependent
+  elements.
+  \begin{itemize}
+  \item
+    Set up environment/seed
+  \item
+    Generate Data
+  \item
+    Perform analysis
+    \begin{itemize}
+    \item
+      Stochastic
+    \item
+      Non-Stochastic
+    \end{itemize}
+  \item
+    Summarize
+  \end{itemize}
+\item
+  Results from one step carry to another by carrying the seed with the
+  results.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{\textbf{Primary work-flow} for
+\texttt{harvestr}}
+
+\begin{itemize}
+\item
+  \texttt{gather(n)} - generate \texttt{n} random number streams.
+\item
+  \texttt{farm(seeds, expr)} - evaluate \texttt{expr} with each seed in
+  \texttt{seeds}.
+\item
+  \texttt{harvest(x, fun)} - for each data in \texttt{x} call the
+  function \texttt{fun}
+\end{itemize}
+\end{frame}
+
+\section{数据管理}
+
+\begin{frame}[fragile]\frametitle{Building blocks}
+
+Some building blocks that might \emph{might} be helpful.
+
+\begin{itemize}
+\item
+  \texttt{plant}- for setting up copies of an object with given seeds.
+\item
+  \texttt{sprout} - for obtaining the sub-streams used with graft.
+\item
+  \texttt{reap} - single object version of \texttt{harvest}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{In case you are wondering}
+
+\begin{itemize}
+\item
+  Yes it works with \texttt{Rcpp} code,
+\item
+  provided the compiled code uses the RNGScope for RNG in C++.
+\item
+  \textbf{But} take care to not carry C++ reference objects across
+  parallel calls.
+\end{itemize}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{seeds <- }\KeywordTok{gather}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DataTypeTok{seed=}\DecValTok{20120614}\NormalTok{)}
+\NormalTok{data <- }\KeywordTok{farm}\NormalTok{(seeds, \{}
+\NormalTok{x1 <- }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{400}\NormalTok{)}
+\NormalTok{x2 <- }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{400}\NormalTok{)}
+\NormalTok{g <- }\KeywordTok{rep}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{4}\NormalTok{), }\DataTypeTok{each=}\DecValTok{100}\NormalTok{)}
+\NormalTok{trt <- }\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{4}\NormalTok{, }\DataTypeTok{each=}\DecValTok{100}\NormalTok{)}
+\NormalTok{y <- }\KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n=}\DecValTok{400}\NormalTok{, }\DataTypeTok{mean=}\DecValTok{3}\NormalTok{*x1 + x2 + g)}
+\KeywordTok{data.frame}\NormalTok{(y, x1, x2, trt)}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+ 
+
+\end{document}

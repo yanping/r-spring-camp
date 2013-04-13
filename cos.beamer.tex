@@ -7,11 +7,13 @@ $if(colortheme)$
 $endif$
 \usepackage{amssymb,amsmath}
 \usepackage[boldfont,slantfont,CJKsetspaces,CJKchecksingle]{xeCJK}
-\newcommand{\hurl}[1]{\href{#1}{\color{blue}#1}} %自定义的命令
+\newcommand{\hurl}[1]{\href{#1}{\color{blue}#1}} %自定义的命令\hurl
 \usepackage{ifxetex,ifluatex}
+
 % 表格环境
-\usepackage{longtable} 
-% 表格脚注的定义
+\usepackage{longtable}
+
+% 下面三行是表格脚注的定义
 \makeatletter
 \def\fnum@table{\tablename~\thetable}
 \makeatother
@@ -33,27 +35,33 @@ $endif$
 \fi
 \fi
 $if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{plainnat}
+  \usepackage{natbib}
+  \bibliographystyle{plainnat}
 $endif$
+
 $if(biblatex)$
-\usepackage{biblatex}
-$if(biblio-files)$
-\bibliography{$biblio-files$}
+  \usepackage{biblatex}
+  $if(biblio-files)$
+    \bibliography{$biblio-files$}
+  $endif$
 $endif$
-$endif$
+
 $if(listings)$
-\usepackage{listings}
+  \usepackage{listings}
 $endif$
+
 $if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+  \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
 $endif$
+
 $if(highlighting-macros)$
-$highlighting-macros$
+  $highlighting-macros$
 $endif$
+
 $if(verbatim-in-note)$
-\usepackage{fancyvrb}
+  \usepackage{fancyvrb}
 $endif$
+
 $if(fancy-enums)$
 % Redefine labelwidth for lists; otherwise, the enumerate package will cause
 % markers to extend beyond the left margin.
@@ -61,18 +69,22 @@ $if(fancy-enums)$
 % \renewcommand{\@listi}
 % {\setlength{\labelwidth}{4em}}
 % }\makeatother
-\usepackage{enumerate}
+  \usepackage{enumerate}
 $endif$
+
 $if(tables)$
-\usepackage{ctable}
-\usepackage{float} % provides the H option for float placement
+  \usepackage{ctable}
+  \usepackage{float} % provides the H option for float placement
 $endif$
+
 $if(url)$
-\usepackage{url}
+  \usepackage{url}
 $endif$
+
 $if(graphics)$
-\usepackage{graphicx}
+  \usepackage{graphicx}
 $endif$
+
 % Comment these out if you don't want a slide with just the
 % part/section/subsection/subsubsection title:
 \AtBeginPart{\frame{\partpage}}
@@ -80,51 +92,60 @@ $endif$
 \AtBeginSubsection{\frame{\subsectionpage}}
 \AtBeginSubsubsection{\frame{\subsubsectionpage}}
 $if(strikeout)$
-\usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+  \usepackage[normalem]{ulem}
+  % avoid problems with \sout in headers with hyperref:
+  \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
+
 $if(subscript)$
-\newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
+  \newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
 $endif$
 % \setlength{\parindent}{0pt}
 % \setlength{\parskip}{6pt plus 2pt minus 1pt}
 % \setlength{\emergencystretch}{3em} % prevent overfull lines
 $if(numbersections)$
+
 $else$
-\setcounter{secnumdepth}{0}
+  \setcounter{secnumdepth}{0}
 $endif$
+
 $if(verbatim-in-note)$
-\VerbatimFootnotes % allows verbatim text in footnotes
+  \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
+
 $if(lang)$
-\usepackage[$lang$]{babel}
+  \usepackage[$lang$]{babel}
 $endif$
+
 $for(header-includes)$
-$header-includes$
+  $header-includes$
 $endfor$
  
 $if(title)$
-$if(shorttitle)$
-\title[$shorttitle$]{$title$}
-$else$
-\title{$title$}
+  $if(shorttitle)$
+    \title[$shorttitle$]{$title$}
+  $else$
+    \title{$title$}
+  $endif$
 $endif$
-$endif$
+
 $if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
+  \author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
+
 $if(date)$
-\date{$date$}
+  \date{$date$}
 $endif$
+
 \institute[统计之都]{
 统计之都\\
 \hurl{http://cos.name}
 }
+
 \setbeamertemplate{navigation symbols}{}
 \begin{document}
 $if(title)$
-\frame{\titlepage}
+  \frame{\titlepage}
 $endif$
  
 $for(include-before)$
@@ -140,24 +161,25 @@ $endif$
 $body$
  
 $if(natbib)$
-$if(biblio-files)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$biblio-files$}
+  $if(biblio-files)$
+    $if(biblio-title)$
+      $if(book-class)$
+        \renewcommand\bibname{$biblio-title$}
+      $else$
+        \renewcommand\refname{$biblio-title$}
+      $endif$
+    $endif$
+      \bibliography{$biblio-files$}
  
+  $endif$
 $endif$
-$endif$
+
 $if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
  
 $endif$
 $for(include-after)$
-$include-after$
+  $include-after$
  
 $endfor$
 \end{document}
