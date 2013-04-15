@@ -70,7 +70,7 @@
 R的官方网站 <http://www.r-project.org/>  
 
 
-\centering\includegraphics[height=0.6\textheight]{fig/cran.png}
+\centering\includegraphics[height=0.6\textheight]{figure/cran.png}
 
 ## 开发环境
 
@@ -223,12 +223,12 @@ is.array(x)
 - x * y     乘法
 - x / y     除法
 - x ^ y     乘幂
+- x %% y    模运算
+- x %/% y   整数除法
 
 
 ## 逻辑运算
 
-- x %% y    模运算
-- x %/% y   整数除法
 - x == y    判断是否相等
 - x <= y    判断是否小于等于
 - x >= y    判断是否大于等于

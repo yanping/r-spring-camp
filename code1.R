@@ -9,6 +9,8 @@
 
 x <- c(1,2,4)
 
+x -> y 
+
 # c是连接函数
 
 q <- c(x,x,8)
@@ -54,8 +56,12 @@ q()
 # 安装包
 install.packages("ggplot2")
 
+install.packages(c("ggplot2","sde"))
+
 # 加载包
 library(ggplot2)
+
+require(sde)
 
 # 当前加载包的情况
 search()
@@ -142,6 +148,7 @@ rep(1:3,2)
 
 # 创建矩阵
 y<-matrix(c(1,2,3,4),nrow=2,ncol=2)
+y<-matrix(c(1,2,3,4),nrow=2,byrow=T)
 
 y<-matrix(c(1,2,3,4),nrow=2)
 
@@ -295,7 +302,6 @@ if (x[1] && y[1]) print("both TRUE")
 if (x & y) print("both TRUE")
 
 
-
 # 关于函数
 #--------------
 
@@ -315,9 +321,11 @@ foo(2,0)
 
 #  if-slse
 #-----------------------
-if (r == 4) {
+if (r == 4) 
+{
   x <- 1
-} else {
+} else 
+{
   x <- 3
   y <- 4
 }
@@ -357,6 +365,17 @@ repeat {  # again similar
 }
 i
 
+
+for(i in 1:10){
+  print(i)
+  if(i>5) break  
+}
+  
+for(i in dr){
+  
+}
+ 
+ 
 # 代码格式化
 #-----------------------
 
