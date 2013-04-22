@@ -236,7 +236,7 @@ lm.y
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##      0.0607       0.9942
+##      0.0898       0.9932
 ```
 
 ```r
@@ -289,44 +289,11 @@ plot(x, y)
 
 ## 散点图
 
-![plot of chunk graphics](figure/graphics.pdf) 
 
 
-## 柱状图
-
-```r
-barplot(x[1:20])
-```
-
-## 柱状图
-
-![plot of chunk barplot](figure/barplot.pdf) 
 
 
-## 柱状图
 
-```r
-barplot(x[1:20], width=2, horiz=T, 
-      col=rainbow(10))
-```
-
-## 柱状图
-
-![plot of chunk barplot2](figure/barplot2.pdf) 
-
-
-## 饼图
-
-```r
-pie(c(10,10,10,20,30,20),
-  c("Nature","Science","Cell","NG",
-  "Nature Cancer","Other"),col=2:7)
-```
-
-
-## 饼图
-
-![plot of chunk pie1](figure/pie1.pdf) 
 
 
 

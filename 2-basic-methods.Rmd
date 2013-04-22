@@ -3,7 +3,7 @@
 % April 14, 2013
 
 ```{r setup, include = FALSE, tidy = TRUE}
-opts_chunk$set(dev = 'pdf', fig.width=4, fig.height=4, fig.align = 'center', cache = T, warning = T, error = T) 
+opts_chunk$set(dev='pdf', fig.width=3, fig.height=3, fig.align = 'center', cache = F, warning = T, error = T) 
 ```
 
 # 读写数据
@@ -272,6 +272,7 @@ plot(x, y)
 ```{r graphics, echo = F}
 x = rnorm(100)
 y = rnorm(100)
+op <- par(mai=c(0.5,0.5,0.5,0.5))
 plot(x, y)
 ```
 
@@ -284,6 +285,7 @@ barplot(x[1:20])
 ## 柱状图
 
 ```{r barplot, echo = F }
+op <- par(mai=c(0.5,0.5,0.5,0.5))
 barplot(x[1:20])
 ```
 
@@ -297,6 +299,7 @@ barplot(x[1:20], width=2, horiz=T,
 ## 柱状图
 
 ```{r barplot2, echo = F }
+op <- par(mai=c(0.5,0.5,0.5,0.5))
 barplot(x[1:20], width=2, horiz=T, 
       col=rainbow(10))
 ```
@@ -313,11 +316,13 @@ pie(c(10,10,10,20,30,20),
 ## 饼图
 
 ```{r pie1, echo = F }
+op <- par(mai=c(0.01,0.6,0,0.3))
 pie(c(10,10,10,20,30,20),
   c("Nature","Science","Cell","NG",
   "Nature Cancer","Other"),col=2:7)
 ```
 
-
-
+```{r op, include=F}
+par(op)
+```
 
