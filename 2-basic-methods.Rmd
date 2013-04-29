@@ -321,8 +321,3 @@ pie(c(10,10,10,20,30,20),
   c("Nature","Science","Cell","NG",
   "Nature Cancer","Other"),col=2:7)
 ```
-
-```{r op, include=F}
-par(op)
-```
-
